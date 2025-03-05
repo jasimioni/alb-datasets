@@ -21,7 +21,7 @@ jobs:
 
       - name: Install R packages if needed
         run: |
-          R_PACKAGES="beepr furrr future GetBCBData lubridate openxlsx purrr ragg rbcb readxl tibble tidyverse writexl"
+          R_PACKAGES="GetBCBData openxlsx tidyverse"
           INSTALLED_PACKAGES=$(Rscript -e "paste(.packages(all.available = TRUE), collapse = ' ')")
           MISSING_PACKAGES=$(echo "$R_PACKAGES" | tr ' ' '\n' | grep -vxF -f <(echo "$INSTALLED_PACKAGES" | tr ' ' '\n'))
           if [[ -n "$MISSING_PACKAGES" ]]; then

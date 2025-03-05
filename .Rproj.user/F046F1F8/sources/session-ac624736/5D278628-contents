@@ -9,19 +9,9 @@ gc()
 # INSTALL AND LOAD PACKAGES ####################################################
 
 packages = c(
-  'beepr', 
-  'furrr', 
-  'future', 
   'GetBCBData', 
-  'lubridate', 
   'openxlsx',
-  'purrr',
-  'ragg',
-  'rbcb', 
-  'readxl', 
-  'tibble', 
-  'tidyverse', 
-  'writexl')
+  'tidyverse')
 
 for (pkg in packages) {
   if (!require(pkg, character.only = TRUE)) {
@@ -140,9 +130,5 @@ duration <- sprintf("%02d:%02d:%02d", hours, minutes, seconds)
 
 # TEMPO DE EXECUÇÃO:
 print(duration)
-
-# BEEP #########################################################################
-
-beep(sound = "coin")
 
 # END ##########################################################################
