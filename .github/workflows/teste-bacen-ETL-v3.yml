@@ -24,7 +24,9 @@ jobs:
 
       - name: Install R packages
         run: |
-          Rscript -e 'install.packages(c("GetBCBData", "openxlsx", "tidyverse"), repos = "https://cran.rstudio.com/", method = "libcurl")'
+          Rscript -e 'packages <- c("GetBCBData", "openxlsx", "tidyverse");
+                      to_install <- packages[!(packages %in% installed.packages()[,"Package"])];
+                      if(length(to_install)) install.packages(to_install, repos = "https://cran.rstudio.com/", method = "libcurl")'
 
       - name: Run R script
         run: Rscript bacen/scripts/102_bacen_ETL_v01_download_simples.R

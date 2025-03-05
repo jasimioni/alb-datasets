@@ -9,9 +9,10 @@ gc()
 # INSTALL AND LOAD PACKAGES ####################################################
 
 # packages = c(
-#   'GetBCBData', 
+#   'GetBCBData',
 #   'openxlsx',
 #   'tidyverse')
+# 
 # 
 # for (pkg in packages) {
 #   if (!require(pkg, character.only = TRUE)) {
@@ -19,6 +20,15 @@ gc()
 #   } 
 #   library(pkg, character.only = TRUE)
 # }
+
+# LOAD PACKAGES ################################################################
+
+packages = c(
+  'GetBCBData',
+  'openxlsx',
+  'tidyverse')
+
+library(pkg, character.only = TRUE)
 
 # TIME CONTROL #################################################################
 
