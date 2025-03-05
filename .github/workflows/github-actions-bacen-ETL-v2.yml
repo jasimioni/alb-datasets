@@ -1,4 +1,4 @@
-name: teste - Run ETL BACEN
+name: teste2 - Run ETL BACEN
 
 on:
   workflow_dispatch:
