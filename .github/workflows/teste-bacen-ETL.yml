@@ -19,14 +19,14 @@ jobs:
         with:
           r-version: '4.2.0' # Or your desired R version
 
-      - name: Install R packages if needed
-        run: |
-          R_PACKAGES="GetBCBData openxlsx tidyverse"
-          INSTALLED_PACKAGES=$(Rscript -e "paste(.packages(all.available = TRUE), collapse = ' ')")
-          MISSING_PACKAGES=$(echo "$R_PACKAGES" | tr ' ' '\n' | grep -vxF -f <(echo "$INSTALLED_PACKAGES" | tr ' ' '\n'))
-          if [[ -n "$MISSING_PACKAGES" ]]; then
-            Rscript -e "install.packages(c($(echo "$MISSING_PACKAGES" | tr '\n' ',')))"
-          fi
+#      - name: Install R packages if needed
+#        run: |
+#          R_PACKAGES="GetBCBData openxlsx tidyverse"
+#          INSTALLED_PACKAGES=$(Rscript -e "paste(.packages(all.available = TRUE), collapse = ' ')")
+#          MISSING_PACKAGES=$(echo "$R_PACKAGES" | tr ' ' '\n' | grep -vxF -f <(echo "$INSTALLED_PACKAGES" | tr ' ' '\n'))
+#          if [[ -n "$MISSING_PACKAGES" ]]; then
+#            Rscript -e "install.packages(c($(echo "$MISSING_PACKAGES" | tr '\n' ',')))"
+#          fi
 
       - name: Run R script
         run: Rscript fetch_bacen_data.R
