@@ -23,19 +23,7 @@ jobs:
 
         - name: Install R dependencies
         run: |
-          R -e "packages <- c('beepr', 
-                              'furrr', 
-                              'future', 
-                              'GetBCBData', 
-                              'lubridate', 
-                              'openxlsx',
-                              'purrr',
-                              'ragg',
-                              'rbcb', 
-                              'readxl', 
-                              'tibble', 
-                              'tidyverse', 
-                              'writexl'); \
+          R -e "packages <- c('beepr', 'furrr', 'future', 'GetBCBData', 'lubridate', 'openxlsx', 'purrr', 'rbcb', 'readxl', 'tibble', 'tidyverse', 'writexl'); \
                  install_if_missing <- function(p) { \
                    if (!requireNamespace(p, quietly = TRUE)) install.packages(p) \
                  }; \
