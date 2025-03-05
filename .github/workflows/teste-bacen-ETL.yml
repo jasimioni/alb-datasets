@@ -1,6 +1,7 @@
 name: Run BACEN Data Script
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '17 12 6 3 *'  # March 6th, 9:17 AM São Paulo (UTC-3)
     - cron: '19 12 7 4 *'  # April 7th, 9:19 AM São Paulo (UTC-3)
