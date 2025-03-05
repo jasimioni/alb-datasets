@@ -1,4 +1,4 @@
-name: Teste Run BACEN Data Script
+name: Run BACEN Data Script
 
 on:
   schedule:
@@ -18,12 +18,17 @@ jobs:
         with:
           r-version: '4.2.0' # Or your desired R version
 
-      - name: Install R packages
+      - name: Install R packages if needed
         run: |
-          Rscript -e 'install.packages(c("beepr", "furrr", "future", "GetBCBData", "lubridate", "openxlsx", "purrr", "ragg", "rbcb", "readxl", "tibble", "tidyverse", "writexl"))'
+          R_PACKAGES="beepr furrr future GetBCBData lubridate openxlsx purrr ragg rbcb readxl tibble tidyverse writexl"
+          INSTALLED_PACKAGES=$(Rscript -e "paste(.packages(all.available = TRUE), collapse = ' ')")
+          MISSING_PACKAGES=$(echo "$R_PACKAGES" | tr ' ' '\n' | grep -vxF -f <(echo "$INSTALLED_PACKAGES" | tr ' ' '\n'))
+          if [[ -n "$MISSING_PACKAGES" ]]; then
+            Rscript -e "install.packages(c($(echo "$MISSING_PACKAGES" | tr '\n' ',')))"
+          fi
 
       - name: Run R script
-        run: Rscript 102_bacen_ETL_v01_download_simples.R
+        run: Rscript fetch_bacen_data.R
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
