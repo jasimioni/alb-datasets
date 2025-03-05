@@ -1,4 +1,4 @@
-name: Run R Script
+name: teste - Run ETL BACEN
 
 on:
   workflow_dispatch:
