@@ -27,4 +27,4 @@ jobs:
 
       - name: Run R script
         run: |
-          Rscript bacen/scripts/102_bacen_ETL_v01_download_simples.R.R
+          Rscript bacen/scripts/102_bacen_ETL_v01_download_simples.R
