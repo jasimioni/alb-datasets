@@ -21,9 +21,25 @@ jobs:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
 
-      - name: Install R dependencies
+        - name: Install R dependencies
         run: |
-          R -e "if (!requireNamespace('needed-package', quietly = TRUE)) install.packages('needed-package')"
+          R -e "packages <- c('beepr', 
+                              'furrr', 
+                              'future', 
+                              'GetBCBData', 
+                              'lubridate', 
+                              'openxlsx',
+                              'purrr',
+                              'ragg',
+                              'rbcb', 
+                              'readxl', 
+                              'tibble', 
+                              'tidyverse', 
+                              'writexl'); \
+                 install_if_missing <- function(p) { \
+                   if (!requireNamespace(p, quietly = TRUE)) install.packages(p) \
+                 }; \
+                 lapply(packages, install_if_missing)"
 
       - name: Run R script
         run: |
