@@ -1,4 +1,4 @@
-name: Run BACEN Data Script
+name: Teste v2 Run BACEN Data Script
 
 on:
   workflow_dispatch:
