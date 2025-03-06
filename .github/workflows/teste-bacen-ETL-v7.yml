@@ -14,17 +14,24 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
 
-        - name: Install dependencies
+      - name: Log repository info
+        run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+
+      - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install r-cran-furrr r-cran-future r-cran-future.apply r-cran-future.batchtools r-cran-lubridate r-cran-purrr r-cran-purrrlyr r-cran-purrrogress r-cran-readxl r-cran-tibble r-cran-tidyverse r-cran-littler -y
+      
       - name: Run the script
         run: |
           cd ${{ github.workspace }}/r
           sudo r bacen/scripts/102_bacen_ETL_v01_download_simples-v6.r
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      
+      - name: Auto-commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Updated files
-      - run: echo "This job's status is ${{ job.status }}."
+      
+      - name: Log job status
+        run: echo "This job's status is ${{ job.status }}."
