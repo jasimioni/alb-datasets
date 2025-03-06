@@ -1,11 +1,10 @@
 name: Teste v7 Run BACEN Data Script
-
+run-name: ${{ github.actor }} is running an R script to parse BCB data
 on:
-  workflow_dispatch:
   schedule:
     - cron: '17 12 10 3 *'  # March 6th, 9:17 AM São Paulo (UTC-3)
     - cron: '19 12 7 4 *'  # April 7th, 9:19 AM São Paulo (UTC-3)
-
+  workflow_dispatch:
 jobs:
   run_script:
     runs-on: ubuntu-22.04
