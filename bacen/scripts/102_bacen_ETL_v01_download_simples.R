@@ -1,25 +1,27 @@
 # CLEAR ENVIRONMENT ############################################################
 
+# Remove all objects from the environment
+rm(list = ls())
+
+# Run garbage collection
+gc()
+
 # INSTALL AND LOAD PACKAGES ####################################################
 
-install_and_load_packages <- function(...) {
-  # Capture the arguments as a character vector
-  packages <- c(...)
-  
-  # Check if all inputs are strings
-  if (!all(sapply(packages, is.character))) {
-    stop("All input arguments must be strings representing package names.")
-  }
-  
-  for (pkg in packages) {
-    if (!require(pkg, character.only = TRUE)) {
-      install.packages(pkg, method = "wget")
-    } 
-    library(pkg, character.only = TRUE)
-  } 
+packages = c(
+  'GetBCBData',
+  'openxlsx',
+  'dplyr',
+  'tidyr'
+)
+# 
+# 
+ for (pkg in packages) {
+   if (!require(pkg, character.only = TRUE)) {
+     install.packages(pkg, repos = "https://cran.rstudio.com/", method = "libcurl")
+   } 
+   library(pkg, character.only = TRUE)
 }
-
-install_and_load_packages('GetBCBData', 'dplyr', 'tidyr', 'openxlsx')
 
 # TIME CONTROL #################################################################
 
