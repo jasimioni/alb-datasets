@@ -30,7 +30,7 @@ jobs:
           Rscript -e 'sapply(c("GetBCBData", "openxlsx", "tidyverse"), library, character.only = TRUE)'
 
       - name: Run R script
-        run: Rscript bacen/scripts/102_bacen_ETL_v01_download_simples.R
+        run: Rscript bacen/scripts/102_bacen_ETL_v01_download_simples-v6.R
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
