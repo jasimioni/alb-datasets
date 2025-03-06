@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install wget r-cran-furrr r-cran-future r-cran-future.apply r-cran-future.batchtools r-cran-lubridate r-cran-purrr r-cran-purrrlyr r-cran-purrrogress r-cran-readxl r-cran-tibble r-cran-tidyverse r-cran-littler -y
+          sudo apt install wget r-cran-openxlsx r-cran-furrr r-cran-future r-cran-future.apply r-cran-future.batchtools r-cran-lubridate r-cran-purrr r-cran-purrrlyr r-cran-purrrogress r-cran-readxl r-cran-tibble r-cran-tidyverse r-cran-littler -y
 
       - name: Run R script
         run: sudo Rscript bacen/scripts/102_bacen_ETL_v01_download_simples.R
