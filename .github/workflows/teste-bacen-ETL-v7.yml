@@ -1,0 +1,29 @@
+name: Teste v7 Run BACEN Data Script
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 12 10 3 *'  # March 6th, 9:17 AM São Paulo (UTC-3)
+    - cron: '19 12 7 4 *'  # April 7th, 9:19 AM São Paulo (UTC-3)
+
+jobs:
+  run_script:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+        - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install r-cran-furrr r-cran-future r-cran-future.apply r-cran-future.batchtools r-cran-lubridate r-cran-purrr r-cran-purrrlyr r-cran-purrrogress r-cran-readxl r-cran-tibble r-cran-tidyverse r-cran-littler -y
+      - name: Run the script
+        run: |
+          cd ${{ github.workspace }}/r
+          sudo r bacen/scripts/102_bacen_ETL_v01_download_simples-v6.r
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Updated files
+      - run: echo "This job's status is ${{ job.status }}."
