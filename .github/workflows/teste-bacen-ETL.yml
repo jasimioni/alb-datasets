@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
@@ -20,7 +20,7 @@ jobs:
           sudo apt install wget r-cran-furrr r-cran-future r-cran-future.apply r-cran-future.batchtools r-cran-lubridate r-cran-purrr r-cran-purrrlyr r-cran-purrrogress r-cran-readxl r-cran-tibble r-cran-tidyverse r-cran-littler -y
 
       - name: Run R script
-        run: r bacen/scripts/102_bacen_ETL_v01_download_simples.R
+        run: sudo r bacen/scripts/102_bacen_ETL_v01_download_simples.R
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
